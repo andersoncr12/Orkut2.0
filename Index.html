@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Orkut - Meu Perfil</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #dfe8f6;
+}
+
+header {
+    background: #6d84b4;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    max-width: 1100px;
+    margin: 10px auto;
+    gap: 10px;
+}
+
+/* COLUNA ESQUERDA */
+.sidebar {
+    width: 220px;
+}
+
+.box {
+    background: white;
+    border: 1px solid #c3cde0;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.profile-pic {
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+.menu a {
+    display: block;
+    text-decoration: none;
+    color: #3b5998;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+/* COLUNA CENTRAL */
+.main {
+    flex: 1;
+}
+
+.scrap {
+    border-bottom: 1px solid #ddd;
+    padding: 5px 0;
+}
+
+textarea {
+    width: 100%;
+    height: 60px;
+}
+
+button {
+    background: #6d84b4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #5a73a5;
+}
+
+/* COLUNA DIREITA */
+.right {
+    width: 220px;
+}
+
+.friend {
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+    font-size: 12px;
+    margin: 5px;
+}
+
+.friend img {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    orkut
+</header>
+
+<div class="container">
+
+    <!-- ESQUERDA -->
+    <div class="sidebar">
+        <div class="box">
+            <img src="https://i.imgur.com/8Km9tLL.png" class="profile-pic">
+            <strong>Anderson</strong><br>
+            Masculino, Brasil
+        </div>
+
+        <div class="box menu">
+            <a href="#">Perfil</a>
+            <a href="#">Recados</a>
+            <a href="#">Fotos</a>
+            <a href="#">Vídeos</a>
+            <a href="#">Depoimentos</a>
+            <a href="#">Comunidades</a>
+        </div>
+    </div>
+
+    <!-- CENTRO -->
+    <div class="main">
+        <div class="box">
+            <strong>Quem sou eu</strong>
+            <p>Esse é meu Orkut clássico feito em HTML 😎</p>
+        </div>
+
+        <div class="box">
+            <strong>Enviar recado</strong><br><br>
+            <textarea id="mensagem"></textarea><br>
+            <button onclick="enviarScrap()">Enviar</button>
+        </div>
+
+        <div class="box">
+            <strong>Recados</strong>
+            <div id="scraps"></div>
+        </div>
+    </div>
+
+    <!-- DIREITA -->
+    <div class="right">
+        <div class="box">
+            <strong>Amigos (6)</strong><br><br>
+
+            <div class="friend">
+                <img src="https://i.imgur.com/QCNbOAo.png">
+                João
+            </div>
+
+            <div class="friend">
+                <img src="https://i.imgur.com/QCNbOAo.png">
+                Maria
+            </div>
+
+            <div class="friend">
+                <img src="https://i.imgur.com/QCNbOAo.png">
+                Carlos
+            </div>
+        </div>
+
+        <div class="box">
+            <strong>Comunidades</strong>
+            <ul>
+                <li>Eu amo Orkut</li>
+                <li>HTML raiz</li>
+                <li>Saudades 2008</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function enviarScrap() {
+    let texto = document.getElementById("mensagem").value;
+    if (texto.trim() === "") return;
+
+    let div = document.createElement("div");
+    div.className = "scrap";
+    div.innerHTML = "<strong>Anônimo:</strong> " + texto;
+
+    document.getElementById("scraps").prepend(div);
+    document.getElementById("mensagem").value = "";
+}
+</script>
+
+</body>
+</html>
